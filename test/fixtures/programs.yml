@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  donation_goal: 9.99
+  total_donated: 9.99
+  start_date: 
+  end_date: 
+
+two:
+  name: MyString
+  description: MyText
+  donation_goal: 9.99
+  total_donated: 9.99
+  start_date: 
+  end_date: 
