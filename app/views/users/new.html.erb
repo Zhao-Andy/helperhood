@@ -1,0 +1,24 @@
+<h1>Sign up here</h1>
+<%= form_tag('/users', method: 'post') do %>
+  <div>
+    <%= label_tag(:email) %>
+    <%= text_field_tag(:email) %>
+  </div>
+  <div>
+    <%= label_tag(:password) %>
+    <%= password_field_tag(:password) %>
+  </div>
+  <div>
+    <%= label_tag(:password_confirmation) %>
+    <%= password_field_tag(:password_confirmation) %>
+  </div>
+  <div>
+    <%= radio_button_tag(:resident, true) %>
+    <%= label_tag(:resident, "I am a resident") %>
+  </div>
+  <div>
+    <%= radio_button_tag(:resident, false) %>
+    <%= label_tag(:resident, "I am a nonprofit") %>
+  </div>
+  <%= submit_tag("Submit") %>
+<% end %>
