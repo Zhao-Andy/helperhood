@@ -1,14 +1,14 @@
 class ProgramsController < ApplicationController
-  before_action :current_user
-
-  def homepage
-  end
-
   def index
     @programs = Program.all
   end
 
   def new
+    redirect_to '/programs' unless current_user.resident == false
+  end
+
+  def edit
+    @program = Program.find_by(id: params[:id])
   end
 
   def show
@@ -16,6 +16,7 @@ class ProgramsController < ApplicationController
   end
 
   def create
+    user_nonprofit
     @program = Program.create(
       name: params[:name],
       description: params[:description],

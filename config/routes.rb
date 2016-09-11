@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+
   # homepage
-  get '/' => 'programs#homepage'
+  get '/' => 'home_pages#home'
 
   # users
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   patch '/users' => 'users#update'
-  get '/users/unconfirmed' => 'users#unconfirmed' 
+  get '/users/unconfirmed' => 'users#unconfirmed'
 
   # sessions
   get '/login' => 'sessions#new'
@@ -17,15 +18,15 @@ Rails.application.routes.draw do
   get '/profile' => 'profiles#show'
   get '/profile/resident/new' => 'profiles#new_resident'
   get '/profile/nonprofit/new' => 'profiles#new_nonprofit'
-  get '/new_profile/edit' => 'profiles#edit'
-  post '/new_profile' => 'profiles#create'
+  get '/profile/edit' => 'profiles#edit'
+  post '/profile' => 'profiles#create'
   patch '/profile' => 'profiles#update'
 
   # programs
   get '/programs' => 'programs#index'
-  get '/programs/:name' => 'programs#show'
+  get '/programs/name/:name' => 'programs#show'
   get '/programs/new' => 'programs#new'
   post '/programs' => 'programs#create'
-  patch 'programs/:name' => 'programs#update'
-  delete 'programs/:name' => 'programs#destroy'
+  patch 'programs/name/:name' => 'programs#update'
+  delete 'programs/name/:name' => 'programs#destroy'
 end

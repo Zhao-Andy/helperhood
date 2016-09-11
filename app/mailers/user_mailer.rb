@@ -1,9 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@helperhood.com'
+  default from: 'admin@helperhood.com'
 
   def welcome_email(user)
     @user = user
-    @url = "http://www.helperhood.com/email_confirmation"
+    @nonprofit_url = "http://www.helperhood.com/profile/nonprofit/new"
+    @resident_url = "http://www.helperhood.com/profile/resident/new"
     mail(to: @user.email, subject: 'Welcome to Helperhood!')
   end
 end
