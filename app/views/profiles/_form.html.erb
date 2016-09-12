@@ -1,7 +1,6 @@
-
   <div>
-    <%= label_tag(:name) %>
-    <% text_field_tag(:name) %>
+    <%= label_tag("Full Name") %>
+    <%= text_field_tag(:name) %>
   </div>
   <div>
     <%= label_tag(:description) %>
@@ -9,7 +8,9 @@
   </div>
   <div>
     <%= label_tag(:profile_img) %>
+    <%= text_field_tag(:profile_img) %>
   </div>
+  <b>Your Address:</b>
   <div>
     <%= label_tag(:street) %>
     <%= text_field_tag(:street) %>

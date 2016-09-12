@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'aide_types/create'
+
+  get 'aide_types/update'
+
+  get 'aide_types/destroy'
+
   # homepage
   get '/' => 'home_pages#home'
 
@@ -24,8 +30,8 @@ Rails.application.routes.draw do
 
   # programs
   get '/programs' => 'programs#index'
-  get '/programs/name/:name' => 'programs#show'
   get '/programs/new' => 'programs#new'
+  get '/programs/:id' => 'programs#show'
   post '/programs' => 'programs#create'
   patch 'programs/name/:name' => 'programs#update'
   delete 'programs/name/:name' => 'programs#destroy'

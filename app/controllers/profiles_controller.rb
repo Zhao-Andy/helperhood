@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :current_user
+
   def new_nonprofit
     # nonprofit profile new page
     if current_user.resident == false
@@ -28,17 +29,23 @@ class ProfilesController < ApplicationController
     @profile = Profile.create(
       name: params[:name],
       description: params[:description],
-      address: params[:address],
+      address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
       zipcode: params[:zipcode],
       profile_img: params[:profile_img],
       user_id: current_user.id
     )
     if @profile.save
       flash[:success] = "Profile created!"
-      redirect_to '/programs'
+      if current_user.resident
+        redirect_to '/programs'
+      else redirect_to '/programs/new'
+      end
     else
       flash[:danger] = @profile.errors.full_messages
-      render 'new.html.erb'
+      if current_user.resident
+        render 'new_resident.html.erb'
+      else render 'new_nonprofit.html.erb'
+      end
     end
   end
 

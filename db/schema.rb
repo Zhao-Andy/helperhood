@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901001744) do
+ActiveRecord::Schema.define(version: 20160911182905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 20160901001744) do
   create_table "aide_types", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "program_id"
-    t.boolean  "volunteer",                           default: false
-    t.decimal  "donation",   precision: 10, scale: 2
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.boolean  "volunteer",                               default: false
+    t.decimal  "donation",       precision: 10, scale: 2
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.boolean  "support_status",                          default: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -39,12 +40,14 @@ ActiveRecord::Schema.define(version: 20160901001744) do
   create_table "programs", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "donation_goal", precision: 10, scale: 2
-    t.decimal  "total_donated", precision: 10, scale: 2
+    t.decimal  "donation_goal",           precision: 10, scale: 2
+    t.decimal  "total_donated",           precision: 10, scale: 2
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "address"
+    t.integer  "zipcode",       limit: 8
   end
 
   create_table "user_programs", force: :cascade do |t|

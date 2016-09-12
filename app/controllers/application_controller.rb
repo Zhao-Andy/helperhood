@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def authenticate_user!
-    redirect_to '/' unless current_user
+  def authenticate_user_status!
+    redirect_to '/' unless current_user.resident == false
   end
 end

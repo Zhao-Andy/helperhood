@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :user_programs
   has_many :programs, through: :user_programs
   validates :email, :password_digest, presence: true
-  validates_presence_of :resident, in: [true, false] 
+  validates :resident, inclusion: { in: [true, false], message: "You forgot to pick your account type!"}
   validates :password_digest, confirmation: true
 
   has_secure_password

@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+  before_action :authenticate_user_status!, only: [:new, :create, :update, :destroy]
   def index
     @programs = Program.all
   end
@@ -16,16 +17,21 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    user_nonprofit
     @program = Program.create(
       name: params[:name],
       description: params[:description],
+      address: params[:address],
+      zipcode: params[:zipcode],
       donation_goal: params[:donation_goal],
       total_donated: 0,
       start_date: params[:start_date],
       end_date: params[:end_date]
     )
     if @program.valid?
+      UserProgram.create(
+        user_id: current_user.id,
+        program_id: @program.id
+      )
       flash[:success] = "#{@program.name} was successfully created!"
       redirect_to "/programs/#{@program.id}"
     else
@@ -50,5 +56,10 @@ class ProgramsController < ApplicationController
     @program = Program.find_by(id: params[:id])
     @program.destroy
     redirect_to "/programs"
+  end
+
+  def volunteer
+    @program = Program.find_by(id: params[:id])
+
   end
 end

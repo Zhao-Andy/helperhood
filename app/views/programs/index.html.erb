@@ -1,8 +1,3 @@
-<h2>there's supposed to be a list of programs you can do stuff with</h2>
-<ul>
-  <h2>Things to do:</h2>
-  <li>donate</li>
-  <li>volunteer</li>
-  <li>view</li>
-  <li>heart/support button</li>
-</ul>
+<h1>Here are the current programs!</h1>
+<% @programs.all.each do |program| %>
+<%= program.name  %> from 
