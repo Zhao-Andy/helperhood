@@ -1,18 +1,28 @@
   <div>
     <%= label_tag(:name) %>
-    <%= text_field_tag(:name) %>
+    <%= text_field_tag(:name, @program.name) %>
+  </div>
+  <div>
+    <%= label_tag(:street) %>
+    <%= text_field_tag(:street, @program.street) %>
+    <%= label_tag(:city) %>
+    <%= text_field_tag(:city, @program.city) %>
+    <%= label_tag(:state) %>
+    <%= text_field_tag(:state, @program.state) %>
+    <%= label_tag(:zipcode) %>
+    <%= text_field_tag(:zipcode, @program.zipcode) %>
   </div>
   <div>
     <%= label_tag(:description) %>
-    <%= text_field_tag(:description, 'should be a text box') %>
+    <%= text_field_tag(:description, @program.description) %>
   </div>
   <div>
     <%= label_tag(:donation_goal) %>
-    <%= text_field_tag(:donation_goal) %>
+    <%= text_field_tag(:donation_goal, @program.donation_goal) %>
   </div>
   <div>
     <%= label_tag(:start_date) %>
-    <%= text_field_tag(:start_date) %>
+    <%= text_field_tag(:start_date, @program.start_date) %>
     <%= label_tag(:end_date) %>
-    <%= text_field_tag(:end_date) %>
+    <%= text_field_tag(:end_date, @program.end_date) %>
   </div>

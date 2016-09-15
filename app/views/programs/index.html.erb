@@ -1,3 +1,13 @@
 <h1>Here are the current programs!</h1>
 <% @programs.all.each do |program| %>
-<%= program.name  %> from 
+<%= link_to "#{program.name}", "/programs/#{program.id}"  %>
+<ul>
+  <li><%= program.address %>, <%= program.zipcode %></li>
+  <li><%= program.description %></li>
+  <li><%= program.donation_goal %></li>
+  <li><%= program.total_donated %></li>
+  <li><%= program.start_date %></li>
+  <li><%= program.end_date %></li>
+  <li></li>
+</ul>
+<% end %>

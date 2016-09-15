@@ -30,9 +30,11 @@ Rails.application.routes.draw do
 
   # programs
   get '/programs' => 'programs#index'
+  get '/programs/nonprofit' => 'programs#nonprofit'
   get '/programs/new' => 'programs#new'
   get '/programs/:id' => 'programs#show'
+  get '/programs/:id/edit' => 'programs#edit'
   post '/programs' => 'programs#create'
-  patch 'programs/name/:name' => 'programs#update'
-  delete 'programs/name/:name' => 'programs#destroy'
+  patch 'programs/:id' => 'programs#update'
+  delete 'programs/:id' => 'programs#destroy'
 end

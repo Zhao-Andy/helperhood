@@ -1,11 +1,11 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate_user_status!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user_status!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @programs = Program.all
   end
 
   def new
-    redirect_to '/programs' unless current_user.resident == false
+    @program = Program.new
   end
 
   def edit
@@ -20,7 +20,7 @@ class ProgramsController < ApplicationController
     @program = Program.create(
       name: params[:name],
       description: params[:description],
-      address: params[:address],
+      address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
       zipcode: params[:zipcode],
       donation_goal: params[:donation_goal],
       total_donated: 0,
@@ -42,14 +42,21 @@ class ProgramsController < ApplicationController
 
   def update
     @program = Program.find_by(id: params[:id])
-    @program.update(
+    if @program.update(
       name: params[:name],
       description: params[:description],
       donation_goal: params[:donation_goal],
       start_date: params[:start_date],
-      end_date: params[:end_date]
+      end_date: params[:end_date],
+      address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
+      zipcode: params[:zipcode]
     )
-    render 'show'
+      flash[:success] = "#{@program.name} was successfully updated!"
+      redirect_to "/programs/#{@program.id}"
+    else
+      flash[:danger] = @program.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy
@@ -58,8 +65,7 @@ class ProgramsController < ApplicationController
     redirect_to "/programs"
   end
 
-  def volunteer
-    @program = Program.find_by(id: params[:id])
-
+  def nonprofit
+    @program = UserProgram.where(user_id: current_user.id)
   end
 end
