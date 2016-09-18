@@ -4,10 +4,14 @@
 <ul>
   <li><%= program.address %>, <%= program.zipcode %></li>
   <li><%= program.description %></li>
-  <li><%= program.donation_goal %></li>
-  <li><%= program.total_donated %></li>
-  <li><%= program.start_date %></li>
-  <li><%= program.end_date %></li>
-  <li></li>
+  <% if program.donation_goal.to_i != 0 || program.total_donated.to_i != 0 %>
+  <li>Donation Goal: $<%= program.donation_goal.to_f %></li>
+  <li>Total Donated: <%= program.total_donated.to_f %></li>
+  <% end %>
+  <li>Start Date: <%= program.start_date.to_date %></li>
+  <li>End Date: <%= program.end_date.to_date %></li>
+  <a class="btn" href="#">
+    <i class="fa fa-heart-o"></i>Support
+  </a>
 </ul>
 <% end %>

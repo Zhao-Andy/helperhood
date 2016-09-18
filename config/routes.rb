@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # programs
   get '/programs' => 'programs#index'
-  get '/programs/nonprofit' => 'programs#nonprofit'
+  get '/my-programs' => 'programs#user_index'
   get '/programs/new' => 'programs#new'
   get '/programs/:id' => 'programs#show'
   get '/programs/:id/edit' => 'programs#edit'

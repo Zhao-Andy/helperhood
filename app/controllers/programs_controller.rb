@@ -4,6 +4,10 @@ class ProgramsController < ApplicationController
     @programs = Program.all
   end
 
+  def user_index
+    @user_programs_array = UserProgram.where(user_id: current_user)
+  end
+
   def new
     @program = Program.new
   end
@@ -36,7 +40,7 @@ class ProgramsController < ApplicationController
       redirect_to "/programs/#{@program.id}"
     else
       flash[:danger] = @program.errors.full_messages
-      render 'show'
+      render 'new'
     end
   end
 

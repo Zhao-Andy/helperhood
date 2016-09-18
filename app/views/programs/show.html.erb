@@ -1,4 +1,6 @@
 <h1>Name: <%= @program.name %></h1>
+Address: <%= @program.address %>, <%= @program.zipcode %>
+<br>
 Description: <%= @program.description %>
 <br>
 How much we need: $<%= @program.donation_goal %>
@@ -9,4 +11,6 @@ Start date of the program: <%= @program.start_date %>
 <br>
 End date of the program: <%= @program.end_date %>
 <br>
+<% unless current_user.resident %>
 <%= link_to "Edit the program", "/programs/#{@program.id}/edit" %>
+<% end %>
