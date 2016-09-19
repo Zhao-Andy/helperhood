@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'aide_types/create'
-
-  get 'aide_types/update'
-
-  get 'aide_types/destroy'
-
   # homepage
   get '/' => 'home_pages#home'
 
@@ -13,7 +6,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   patch '/users' => 'users#update'
-  get '/users/unconfirmed' => 'users#unconfirmed'
 
   # sessions
   get '/login' => 'sessions#new'
@@ -37,4 +29,8 @@ Rails.application.routes.draw do
   post '/programs' => 'programs#create'
   patch 'programs/:id' => 'programs#update'
   delete 'programs/:id' => 'programs#destroy'
+
+  namespace :api do
+    # api routes
+  end
 end

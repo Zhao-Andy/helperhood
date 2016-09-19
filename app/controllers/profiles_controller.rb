@@ -35,17 +35,13 @@ class ProfilesController < ApplicationController
       user_id: current_user.id
     )
     if @profile.save
-      flash[:success] = "Profile created!"
+      flash[:success] = "Successfully created profile!"
       if current_user.resident
         redirect_to '/programs'
       else redirect_to '/programs/new'
       end
     else
-      flash[:danger] = @profile.errors.full_messages
-      if current_user.resident
-        render 'new_resident.html.erb'
-      else render 'new_nonprofit.html.erb'
-      end
+      render json: {danger: @profile.errors.full_messages}, status: 422
     end
   end
 

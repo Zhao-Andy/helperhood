@@ -1,19 +1,19 @@
 class ProgramsController < ApplicationController
   before_action :authenticate_user_status!, only: [:new, :create, :edit, :update, :destroy]
-  def index
-    @programs = Program.all
-  end
-
-  def user_index
-    @user_programs_array = UserProgram.where(user_id: current_user)
-  end
-
   def new
     @program = Program.new
   end
 
   def edit
     @program = Program.find_by(id: params[:id])
+  end
+
+  def index
+    @programs = Program.all
+  end
+
+  def user_index
+    @user_programs_array = UserProgram.where(user_id: current_user)
   end
 
   def show
@@ -36,11 +36,10 @@ class ProgramsController < ApplicationController
         user_id: current_user.id,
         program_id: @program.id
       )
-      flash[:success] = "#{@program.name} was successfully created!"
+      flash[:success] = "Program added!"
       redirect_to "/programs/#{@program.id}"
     else
-      flash[:danger] = @program.errors.full_messages
-      render 'new'
+      render json: {danger: @program.errors.full_messages}
     end
   end
 
@@ -67,9 +66,5 @@ class ProgramsController < ApplicationController
     @program = Program.find_by(id: params[:id])
     @program.destroy
     redirect_to "/programs"
-  end
-
-  def nonprofit
-    @program = UserProgram.where(user_id: current_user.id)
   end
 end
