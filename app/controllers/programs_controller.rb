@@ -39,7 +39,8 @@ class ProgramsController < ApplicationController
       flash[:success] = "Program added!"
       redirect_to "/programs/#{@program.id}"
     else
-      render json: {danger: @program.errors.full_messages}
+      flash[:danger] = @program.errors.full_messages
+      render 'new'
     end
   end
 

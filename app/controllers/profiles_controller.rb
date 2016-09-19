@@ -41,18 +41,28 @@ class ProfilesController < ApplicationController
       else redirect_to '/programs/new'
       end
     else
-      render json: {danger: @profile.errors.full_messages}, status: 422
+      flash[:danger] = @profile.errors.full_messages
+      render 'new'
     end
+  end
+
+  def edit
+    @profile = Profile.find_by(id: current_user.id)
   end
 
   def update
     @profile = Profile.find_by(user_id: current_user.id)
-    @profile.update(
+    if @profile.update(
       name: params[:name],
       description: params[:description],
       address: params[:address],
       zipcode: params[:zipcode],
       profile_img: params[:profile_img]
     )
+      flash[:success] = "Profile successfully updated!"
+    else
+      flash[:danger] = @profile.errors.full_messages
+      render 'edit'
+    end
   end
 end
