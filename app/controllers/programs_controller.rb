@@ -22,7 +22,7 @@ class ProgramsController < ApplicationController
   end
 
   def resident_index
-    redirect_to '/np-programs' unless current_user.resident
+    redirect_to '/np-programs' and return nil unless current_user.resident
     @resident_programs_array = ResidentProgram.where(user_id: current_user)
     @donations_array = Donation.where(user_id: current_user.id)
     if @resident_programs_array.empty? && @donations_array.empty?
