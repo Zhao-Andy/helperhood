@@ -1,0 +1,14 @@
+<h1>Here are your programs:</h1>
+<% @nonprofit_programs_array.each do |program| %>
+<%= link_to "#{program.program.name}", "/programs/#{program.id}"  %>
+<ul>
+  <li><%= program.program.address %>, <%= program.program.zipcode %></li>
+  <li><%= program.program.description %></li>
+  <% if program.program.donation_goal.to_i != 0 || program.program.total_donated.to_i != 0 %>
+  <li>Donation Goal: <%= program.program.donation_goal %></li>
+  <li>Total Donated: <%= program.program.total_donated %></li>
+  <% end %>
+  <li>Start Date: <%= program.program.start_date %></li>
+  <li>End Date: <%= program.program.end_date %></li>
+</ul>
+<% end %>

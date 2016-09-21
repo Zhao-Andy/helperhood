@@ -1,0 +1,6 @@
+<h1>Add Photo Here</h1>
+<%= form_tag("/programs/#{@program.id}", method: "patch") do %>
+  <%= render 'form' %>
+  <%= submit_tag("Edit") %>
+<% end %>
+<img src="<%= @profile.photo.url %>">

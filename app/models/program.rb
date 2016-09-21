@@ -1,7 +1,9 @@
 class Program < ActiveRecord::Base
-  has_many :aide_types
-  has_many :user_programs
-  has_many :users, through: :user_programs
+  has_many :donations
+  has_many :resident_programs
+  has_many :nonprofit_programs
+  has_many :users, through: :nonprofit_programs
+
   validates :name, :description, :address, :zipcode, :start_date, :end_date, :donation_goal, presence: true
 
   def nonprofit_programs

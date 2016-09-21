@@ -11,19 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911182905) do
+ActiveRecord::Schema.define(version: 20160920222451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aide_types", force: :cascade do |t|
+  create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "program_id"
-    t.boolean  "volunteer",                               default: false
-    t.decimal  "donation",       precision: 10, scale: 2
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.boolean  "support_status",                          default: false
+    t.decimal  "donation_amount", precision: 8, scale: 2
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  create_table "nonprofit_programs", force: :cascade do |t|
+    t.integer  "program_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -31,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160911182905) do
     t.text     "description"
     t.string   "address"
     t.integer  "zipcode",     limit: 8
-    t.string   "profile_img"
+    t.string   "photo"
     t.integer  "user_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
@@ -48,13 +53,17 @@ ActiveRecord::Schema.define(version: 20160911182905) do
     t.datetime "updated_at",                                       null: false
     t.string   "address"
     t.integer  "zipcode",       limit: 8
+    t.integer  "visits"
+    t.string   "photo"
   end
 
-  create_table "user_programs", force: :cascade do |t|
-    t.integer  "program_id"
+  create_table "resident_programs", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "program_id"
+    t.boolean  "volunteer",      default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "support_status"
   end
 
   create_table "users", force: :cascade do |t|

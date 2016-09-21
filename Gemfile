@@ -30,6 +30,8 @@ gem 'font-awesome-rails'
 
 gem 'faker'
 
+gem 'carrierwave'
+
 gem 'bootstrap-sass', '3.3.7'
 
 # Use Unicorn as the app server

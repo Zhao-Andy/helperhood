@@ -1,6 +1,5 @@
 <h1>Here's Your Profile!</h1>
 <%= @profile.name %>
-<%= @profile.profile_img %>
+<img src="<%= @profile.photo.url %>" alt="">
 <%= @profile.description %>
 <%= @profile.address %> <%= @profile.zipcode %>
- 
