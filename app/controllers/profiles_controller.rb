@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find_by(id: current_user.id)
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def update
@@ -55,11 +55,12 @@ class ProfilesController < ApplicationController
     if @profile.update(
       name: params[:name],
       description: params[:description],
-      address: params[:address],
+      address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
       zipcode: params[:zipcode],
       profile_img: params[:profile_img]
     )
       flash[:success] = "Profile successfully updated!"
+      redirect_to '/profile'
     else
       flash[:danger] = @profile.errors.full_messages
       render 'edit'

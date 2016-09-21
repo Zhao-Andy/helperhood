@@ -31,9 +31,12 @@
             <ul class="dropdown-menu">
               <li><a href="/programs">Current Programs</a></li>
               <% if current_user.nil? == false && current_user.resident == false %>
+              <li><a href="/np-programs">Your Programs</a></li>
               <li><a href="/programs/new">List a New Program</a></li>
               <% end %>
+              <% unless current_user.nil? || current_user.resident == false %>
               <li><a href="/my-programs">Your Programs</a></li>
+              <% end %>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>

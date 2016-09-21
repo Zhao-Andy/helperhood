@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+  before_action :current_user
   before_action :authenticate_user_status!, only: [:new, :create, :edit, :update, :destroy]
   def new
     @program = Program.new
@@ -12,8 +13,24 @@ class ProgramsController < ApplicationController
     @programs = Program.all
   end
 
-  def user_index
-    @user_programs_array = UserProgram.where(user_id: current_user)
+  def nonprofit_index
+    if current_user.resident
+      redirect_to '/my-programs'
+    else
+      @nonprofit_programs_array = NonprofitProgram.where(user_id: current_user)
+    end
+  end
+
+  def resident_index
+    redirect_to '/np-programs' unless current_user.resident
+    @resident_programs_array = ResidentProgram.where(user_id: current_user)
+    @donations_array = Donation.where(user_id: current_user.id)
+    if @resident_programs_array.empty? && @donations_array.empty?
+      # add some javascript flash msg
+      flash[:warning] = "Looks like you need to find some programs you like first!"
+      redirect_to '/programs'
+    end
+    @programs_array = @resident_programs_array.empty? ? @donations_array : @resident_programs_array
   end
 
   def show
