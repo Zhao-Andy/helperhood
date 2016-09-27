@@ -1,15 +1,26 @@
 <h1>Here are the current programs!</h1>
-<% @programs.all.each do |program| %>
-<%= link_to "#{program.name}", "/programs/#{program.id}"  %>
-<ul>
-  <li><%= program.address %>, <%= program.zipcode %></li>
-  <li><%= program.description %></li>
-  <% if program.donation_goal.to_i != 0 || program.total_donated.to_i != 0 %>
-  <li>Donation Goal: $<%= program.donation_goal.to_f %></li>
-  <li>Total Donated: <%= program.total_donated.to_f %></li>
-  <% end %>
-  <li>Start Date: <%= program.start_date.to_date %></li>
-  <li>End Date: <%= program.end_date.to_date %></li>
-  <button>Support</button>
-</ul>
-<% end %>
+<div ng-controller="programCtrl" ng-init="index()">
+  <div ng-repeat="program in programs">
+      <h1><a href="/programs/{{program.id}}">{{program.name}}</a></h1>
+      <ul>
+      <li><h4>{{ program.address }}, {{ program.zipcode }}</h4></li>
+      <li><b>{{ program.description }}</b></li>
+      <li ng-if="program.donation_goal != 0">
+        Donation Goal: ${{ program.donation_goal }}
+      </li>
+      <li ng-if="program.donation_goal != 0">
+        Total Donated: ${{ program.total_donated }}
+      </li>
+      <li>Start Date: {{ program.start_date }}</li>
+      <li>End Date: {{ program.end_date }}</li>
+      <% if current_user %>
+      <div ng-if="program.supportMessage" class="alert alert-success favorite-alert" role="alert">{{program.supportMessage}}</div>
+      <i ng-click="support(program)" ng-class="{'fa-heart': program.liked, 'fa-heart-o': !program.liked}" class="fa fa-lg heart" aria-hidden="true">Support me!</i>
+      <br>
+      <br>
+      <div ng-if="program.volunteerMessage" class="alert alert-success favorite-alert" role="alert">{{program.volunteerMessage}}</div>
+      <i ng-click="volunteer(program)" ng-class="{'fa-hourglass': program.volunteer, 'fa-hourglass-o': !program.volunteer}" class="fa fa-lg hourglass" aria-hidden="true">Volunteer now!</i>
+      <% end %>
+    </ul>
+  </div>
+</div>

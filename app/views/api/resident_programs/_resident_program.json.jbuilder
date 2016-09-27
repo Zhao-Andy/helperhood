@@ -1,0 +1,5 @@
+json.id resident_program.id
+json.user_id resident_program.user_id
+json.program_id resident_program.program_id
+json.volunteer resident_program.volunteer
+json.support_status resident_program.support_status

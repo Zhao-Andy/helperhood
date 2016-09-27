@@ -1,16 +1,22 @@
-<h1>Here are your programs:</h1>
-<% @programs_array.each do |program| %>
-<%= link_to "#{program.program.name}", "/programs/#{program.id}"  %>
-<ul>
-  <li><%= program.program.address %>, <%= program.program.zipcode %></li>
-  <li><%= program.program.description %></li>
-  <% if program.program.donation_goal.to_i != 0 || program.program.total_donated.to_i != 0 %>
-  <li>Donation Goal: <%= program.program.donation_goal %></li>
-  <li>Total Donated: <%= program.program.donation_total(current_user) %></li>
-  <% end %>
-  <li>You've donated: <%= @donations_array.donation_total(current_user) %></li>
-  <li>Start Date: <%= program.program.start_date %></li>
-  <li>End Date: <%= program.program.end_date %></li>
-</ul>
-<button>Volunteer</button> <%= link_to "Donate!" %>
-<% end %>
+<h1>ANGULAR --------------</h1>
+<div ng-controller="programCtrl" ng-init="residentIndex()">
+  <div ng-repeat="program in programs">
+    <a href="/programs/{{program.id}}">{{program.name}}</a>
+    <ul>
+      <li>{{ program.address }}, {{ program.zipcode }}</li>
+      <li ng-if="program.donation_goal != 0">
+        Donation Goal: ${{ program.donation_goal }}
+      </li>
+      <li ng-if="program.donation_goal != 0">
+        Total Donated: ${{ program.total_donated }}
+      </li>
+      <li ng-if="donation.donation_amount != null">
+        {{ program.donation_amount }}
+      </li>
+      <li>Volunteering? {{ program.volunteer ? 'Yes' : 'No' }}</li>
+      <i ng-click="support(program)" ng-class="{'fa-heart': program.liked, 'fa-heart-o': !program.liked}" class="fa fa-lg heart" aria-hidden="true"></i>
+      <li>Start Date: {{ program.start_date }}</li>
+      <li>End Date: {{ program.end_date }}</li>
+    </ul>
+  </div>
+</div>
