@@ -1,16 +1,19 @@
-<h1>Name: <%= @program.name %></h1>
-Address: <%= @program.address %>, <%= @program.zipcode %>
-<br>
-Description: <%= @program.description %>
-<br>
-How much we need: $<%= @program.donation_goal %>
-<br>
-How much we've received: $<%= @program.total_donated %>
-<br>
-Start date of the program: <%= @program.start_date %>
-<br>
-End date of the program: <%= @program.end_date %>
-<br>
+<h1>ANGULAR --------------</h1>
+<div ng-controller="programCtrl" ng-init="show(<%= params[:id] %>)">
+  <h1>{{ program.name }}</h1>
+  Address: {{ program.address }}, {{program.zipcode }}
+  <br>
+  Description: {{ program.description }}
+  <br>
+  Our donation goal: ${{ program.donation_goal }}
+  <br>
+  How much we've received: ${{ program.total_donated }}
+  <br>
+  Start Date: {{ program.start_date }}
+  <br>
+  End Date: {{ program.end_date }}
+</div>
+<h1>RUBY EDIT BUTTON</h1>
 <% unless current_user.resident %>
 <%= link_to "Edit the program", "/programs/#{@program.id}/edit" %>
 <% end %>

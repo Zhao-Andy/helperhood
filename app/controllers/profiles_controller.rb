@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def new_nonprofit
     # nonprofit profile new page
+    @profile = Profile.new
     if current_user.resident == false
       render 'new_nonprofit.html.erb'
     else redirect_to '/profile/resident/new'
@@ -11,6 +12,7 @@ class ProfilesController < ApplicationController
 
   def new_resident
     # resident profile new page
+    @profile = Profile.new
     if current_user.resident
       render 'new_resident.html.erb'
     else redirect_to '/profile/nonprofit/new'

@@ -17,7 +17,7 @@ class ProgramsController < ApplicationController
     if current_user.resident
       redirect_to '/my-programs'
     else
-      @nonprofit_programs_array = NonprofitProgram.where(user_id: current_user)
+      @nonprofit_programs_array = NonprofitProgram.where(user_id: current_user.id)
     end
   end
 
@@ -37,6 +37,10 @@ class ProgramsController < ApplicationController
     @program = Program.find_by(id: params[:id])
   end
 
+  def res_map_index
+    @programs = Program.all
+  end
+
   def create
     @program = Program.create(
       name: params[:name],
@@ -46,7 +50,13 @@ class ProgramsController < ApplicationController
       donation_goal: params[:donation_goal],
       total_donated: 0,
       start_date: params[:start_date],
-      end_date: params[:end_date]
+      end_date: params[:end_date],
+      latitude: Geocoder.coordinates(
+        "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
+      )[0],
+      longitude: Geocoder.coordinates(
+        "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
+      )[1]
     )
     if @program.valid?
       UserProgram.create(
@@ -70,7 +80,13 @@ class ProgramsController < ApplicationController
       start_date: params[:start_date],
       end_date: params[:end_date],
       address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
-      zipcode: params[:zipcode]
+      zipcode: params[:zipcode],
+      latitude: Geocoder.coordinates(
+        "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
+      )[0],
+      longitude: Geocoder.coordinates(
+        "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
+      )[1]
     )
       flash[:success] = "#{@program.name} was successfully updated!"
       redirect_to "/programs/#{@program.id}"

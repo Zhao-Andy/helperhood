@@ -12,15 +12,13 @@ class UsersController < ApplicationController
     if @user.save && params[:email] == params[:email_confirmation] && @user.resident
       session[:user_id] = @user.id
       flash[:success] =
-        "Thanks! Check your email to create your profile!"
-      UserMailer.welcome_email(@user).deliver_later
-      redirect_to '/'
+        "Thanks! Let's create your profile!"
+      redirect_to '/profile/resident/new'
     elsif @user.save && params[:email] == params[:email_confirmation] && @user.resident == false
       session[:user_id] = @user.id
       flash[:success] =
-        "Thanks! Check your email to create your profile!"
-      UserMailer.welcome_email(@user).deliver_later
-      redirect_to '/'
+        "Thanks! Let's create your profile!"
+      redirect_to '/profile/nonprofit/new'
     else
       flash[:danger] = @user.errors.full_messages
       render 'new.html.erb'
