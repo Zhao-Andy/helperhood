@@ -13,4 +13,13 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require animate
+ *= require owl.carousel
+ *= require owl.theme
+ *= require owl.transitions
+ *= require flaticon
+ *= require settings
+ *= require layers
+ *= require navigation
+ *= require style
  */

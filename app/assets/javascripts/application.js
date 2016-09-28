@@ -12,7 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.min
+//= require jquery-migrate.min
+//= require jquery.easing.1.3.min
 //= require angular
 //= require app
 //= require bootstrap-sprockets
+//= require jquery.sticky.js
+//= require owl.carousel.min
+//= require modernizr.custom.97074
+//= require waypoints.min
+//= require/jquery.counterup.min
+//= require custom.js
+//= require contact.js
+//= require jquery.themepunch.tools.min
+//= require jquery.themepunch.revolution.min
+//= require froogaloop2.min
+//= require moment.min
+//= require revolution-custom
+//= require smoothscroll
+
 //= require_tree .

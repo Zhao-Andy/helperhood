@@ -1,1 +1,127 @@
-<h1>This is the home page</h1>
+<div ng-controller="programCtrl" ng-init="home()">
+<div class="jumbotron">
+  <div class="container" align="center">
+      <div class="space-80"></div>
+      <h1>
+        <span class="text-white">Welcome to Helperhood.</span>
+        <br>
+        <span class="not-grey">Connecting you with your neighborhood.</span>
+      </h1>
+      <div class="space-80"></div>
+      <p><a class="btn btn-white-bg btn-lg" href="/programs/map" role="button"><b>Find Programs Near You</b></a></p>
+
+  </div>
+</div>
+
+
+<!--end cta-->
+<div class="space-80"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <div class="center-title">
+                <h3>Current Programs</h3>
+                <p>
+                    Put your program here
+                </p>
+            </div>
+        </div>
+    </div><!--end center title-->
+  <div class="container">
+    <div class="row">
+            <div class="col-sm-4 margin-b-30 text-center" ng-repeat="program in programs | limitTo : 3">
+                <div class="causes-box">
+                    <div class="causes-thumb">
+                        <span class="image-badge">194 Day left</span>
+                        <%= image_tag('img1.jpg', class: 'img-responsive') %>
+                    </div>
+                    <div class="causes-desc">
+                        <h4><a href="/programs/{{program.id}}">{{program.name}}</a></h4>
+                        <div class="progress clearfix">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"></div>
+                        </div>
+                        <div class="row causes-amount">
+                            <div class="col-xs-6">
+                                <span>Raised</span>
+                                <h1>{{program.total_donated | currency: $ : 2}}</h1>
+                            </div>
+                            <div class="col-xs-6">
+                                <span>Goal</span>
+                                <h1>{{program.donation_goal | currency: $ : 2}}</h1>
+                            </div>
+                        </div>
+                        <p>
+                          {{program.description}}
+                        </p>
+                        <a href="#" class="btn btn-theme-bg">Donate Now</a>
+                    </div>
+                </div><!--end causes box-->
+            </div><!--end causes item-->
+          </div><!--end causes slider-->
+      </div>
+    </div>
+</div>
+<div class="space-50"></div>
+
+<div class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 margin-b-30 text-center">
+                <i class="flaticon-cash-box"></i>
+                <h1 class="text-white counter-digit">123</h1>
+                <h3 class="text-white">Donations</h4>
+                <h5 class="text-white">
+                    Donating gives programs more access to supplies and resources.
+                </h5>
+                <br>
+                <a href="#" class="btn btn-white-bg">Donate</a>
+            </div>
+            <div class="col-sm-4 margin-b-30 text-center">
+                <i class="flaticon-happy-kids"></i>
+                <h1 class="text-white counter-digit">123</h1>
+                <h3 class="text-white">Volunteers</h3>
+                <h5 class="text-white">
+                    Help by volunteering and providing hands on support.
+                </h5>
+                <br>
+                <a href="#" class="btn btn-white-bg">Volunteer</a>
+            </div>
+            <div class="col-sm-4 margin-b-30 text-center">
+                <i class="flaticon-school"></i>
+                <h1 class="text-white counter-digit">123</h1>
+                <h3 class="text-white">Programs</h3>
+                <h5 class="text-white">
+                    Show your support and keep track of which programs you're interested in.
+                </h5>
+                <br>
+                <a href="#" class="btn btn-white-bg">Support</a>
+            </div>
+        </div>
+        <div class="span-50"></div>
+  </div>
+</div><!--help type section end-->
+<div class="white-bg pd-t-80 pd-b-30">
+    <div class="container">
+        <div class="row" align='center'>
+          <div>
+            <h2 class='text-blue'>My zip code is</h2>
+            <div class="space-15"></div>
+            <input type="text" id="dotted" placeholder="10003" autocomplete="off" maxlength="5">
+          </div>
+          <div class="space-20"></div>
+              <a href="/programs/map" class="btn btn-theme-bg btn-lg">Find Programs Near You</a>
+                    <div class="space-80"></div>
+        </div>
+
+    </div>
+</div>
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+    <div class="container text-center text-copyright">
+        <span>&copy; Helperhood</span>
+    </div>
+</footer>
+</div>

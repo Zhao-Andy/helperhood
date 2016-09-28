@@ -7,6 +7,7 @@ json.start_date program.start_date
 json.end_date program.end_date
 json.address program.address
 json.zipcode program.zipcode
+json.city program.city
 json.latitude program.latitude
 json.longitude program.longitude
 json.visits program.visits

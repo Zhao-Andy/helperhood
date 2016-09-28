@@ -1,4 +1,4 @@
-/* 
+/*
     Author     : Design_mylife
     File       : Assan charity template
     version    : v1.0
@@ -142,6 +142,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff !important;
 }
 
+.text-blue {
+  color: #42b8d4 !important;
+}
+
 .text-primary {
   color: #42b8d4;
 }
@@ -261,7 +265,7 @@ Buttons style
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
 .btn-theme-bg:hover {
-  background: #333;
+  background: #1e5f6e;
   color: #fff;
 }
 .btn-theme-bg:focus {
@@ -269,13 +273,27 @@ Buttons style
   color: #fff;
 }
 
+.jumbotron {
+  background: #42b8d4;
+}
+
 .btn-white-bg {
   background: #fff;
-  color: #333;
+  color: #42b8d4;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
 }
 .btn-white-bg:hover {
-  background: #333;
-  color: #fff;
+  background: #fff;
+  color: #b3b3b3;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  }
 }
 
 /*
@@ -375,6 +393,9 @@ Page and heading titles
   z-index: 9999;
 }
 
+.not-grey {
+  color: #1e5f6e;
+}
 .navbar-nav > li > a {
   text-transform: uppercase;
   font-weight: 600;
@@ -383,7 +404,7 @@ Page and heading titles
 }
 
 .navbar-default {
-  background: transparent;
+  background: #1e5f6e;
   border: 0px;
   padding: 10px 0;
   width: 100%;
