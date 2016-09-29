@@ -1,5 +1,7 @@
 <h1>Edit <%= @program.name %></h1>
-<%= form_tag("/programs/#{@program.id}", method: "patch") do %>
+<%= form_tag("/api/programs/#{@program.id}", enctype: "multipart/form-data", method: "patch") do %>
   <%= render 'form' %>
+  <%= label_tag(:photo) %>
+  <%= file_field_tag(:photo) %>
   <%= submit_tag("Edit") %>
 <% end %>

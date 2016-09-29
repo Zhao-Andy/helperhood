@@ -21,10 +21,7 @@ class Api::ProgramsController < ApplicationController
   end
 
   def resident_index
-    # redirect_to '/np-programs.json' and return nil unless current_user.resident
     @resident_programs_array = ResidentProgram.where(user_id: current_user.id)
-    @donations_array = Donation.where(user_id: current_user.id)
-    # @programs_array = @resident_programs_array.empty? ? @donations_array : @resident_programs_array
   end
 
   def show
@@ -53,9 +50,11 @@ class Api::ProgramsController < ApplicationController
         user_id: current_user.id,
         program_id: @program.id
       )
-      render json: {success: "Program was created!"} and redirect_to
+      flash[:success] = "Program was successfully listed!"
+      redirect_to "/programs/#{program.id}"
     else
-      render json: {danger: @program.errors.full_messages}
+      flash[:danger] = @program.errors.full_messages
+      render '/programs/new'
     end
   end
 
@@ -69,6 +68,7 @@ class Api::ProgramsController < ApplicationController
       end_date: params[:end_date],
       address: "#{params[:street]}, #{params[:city]}, #{params[:state]}",
       zipcode: params[:zipcode],
+      photo: params[:photo],
       latitude: Geocoder.coordinates(
         "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
       )[0],
@@ -76,9 +76,11 @@ class Api::ProgramsController < ApplicationController
         "#{params[:street]}, #{params[:city]}, #{params[:state]}, #{params[:zipcode]}"
       )[1]
     )
-      render json: {success: "Program updated successfully!"}
+      flash[:success] = "Program was successfully updated!"
+      redirect_to "/programs/#{@program.id}"
     else
-      render json: {danger: @program.errors.full_messages}
+      flash[:danger] = @program.errors.full_messages
+      render "/programs/#{@program.id}/edit"
     end
   end
 

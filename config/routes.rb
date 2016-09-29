@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get '/np-programs' => 'programs#nonprofit_index'
     get '/programs/:id' => 'programs#show'
     post '/programs' => 'programs#create'
-    patch 'programs' => 'programs#update'
+    patch 'programs/:id' => 'programs#update'
     delete 'programs/:id' => 'programs#destroy'
 
     # profiles

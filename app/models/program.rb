@@ -5,6 +5,7 @@ class Program < ActiveRecord::Base
   has_many :users, through: :nonprofit_programs
 
   validates :name, :description, :address, :zipcode, :start_date, :end_date, :donation_goal, presence: true
+  mount_uploader :photo, ProgramPhotoUploader
 
   def nonprofit_programs
     @nonprofit = User.where(resident: false)

@@ -11,4 +11,6 @@ json.city program.city
 json.latitude program.latitude
 json.longitude program.longitude
 json.visits program.visits
-json.photo program.photo
+if program.photo
+  json.photo program.photo.url
+end
