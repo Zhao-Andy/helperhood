@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'font-awesome-rails'
 
+gem 'seed_dump'
+
 gem 'faker'
 
 gem 'carrierwave'
