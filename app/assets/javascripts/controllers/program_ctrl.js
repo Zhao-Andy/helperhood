@@ -57,7 +57,33 @@
     };
 
     $scope.myMapIndex = function() {
-      $http.get("/api/programs.json")
+      $http.get("/api/my-programs.json")
+      .then(function(response) {
+        $scope.programs = response.data;
+        var map;
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.7091841, lng: -74.0122789},
+          zoom: 12
+        });
+        $scope.programs.forEach(function(program) {
+          var coords = {lat: program.latitude, lng: program.longitude};
+          var marker = new google.maps.Marker({
+            position: coords,
+            map: map
+          });
+          var display = '<h5>' + program.name + '</h5>' +'<p>' + program.description + '</p>';
+          var infoWindow = new google.maps.InfoWindow({
+            content: display
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.open(map, marker);
+          });
+        });
+      });
+    };
+
+    $scope.npMapIndex = function() {
+      $http.get("/api/np-programs.json")
       .then(function(response) {
         $scope.programs = response.data;
         var map;

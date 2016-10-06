@@ -21,7 +21,9 @@ class Api::ProgramsController < ApplicationController
   end
 
   def resident_index
-    @resident_programs_array = ResidentProgram.where(user_id: current_user.id)
+    @resident_programs_array = ResidentProgram.where(
+      "user_id = ? AND (support_status = ? OR volunteer = ?)", 4, true, true
+    )
   end
 
   def show
@@ -51,7 +53,7 @@ class Api::ProgramsController < ApplicationController
         program_id: @program.id
       )
       flash[:success] = "Program was successfully listed!"
-      redirect_to "/programs/#{program.id}"
+      redirect_to "/programs/#{@program.id}"
     else
       flash[:danger] = @program.errors.full_messages
       render '/programs/new'

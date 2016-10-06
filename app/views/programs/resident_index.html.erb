@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-            <div class="causes-list-box" ng-repeat="program in programs">
+            <div class="causes-list-box" ng-repeat="program in programs | filter : filterName">
                 <div class="row vertical-center">
                     <div class="col-sm-6">
                       <img ng-src="{{program.photo}}" alt="" class="img-responsive">
@@ -15,7 +15,7 @@
                         <div class="causes-desc">
                             <h4><a href="/programs/{{program.id}}">{{program.name}}</a></h4>
                             <div class="progress clearfix">
-                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"></div>
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{(program.total_donated / program.donation_goal) * 100}}%"></div>
                             </div>
                             <div class="row causes-amount">
                                 <div class="col-xs-6">
@@ -37,7 +37,6 @@
                             </div>
                             <h4>{{program.description}}</h4>
                             <a href="#" class="btn btn-theme-bg">Donate Now</a>
-                            <% if current_user %>
                             <button ng-click="support(program)" class="btn btn-theme-bg">
                               <span ng-class="{'fa fa-lg fa-heart': program.liked, 'fa fa-lg fa-heart-o': !program.liked}">
                               </span>
@@ -48,7 +47,6 @@
                               </span>
                               Volunteer
                             </button>
-                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@
             <div class="col-md-3">
                     <div class="sidebar-widget search-widget">
                         <form>
-                            <input type="text" ng-model="searchName" class="form-control" placeholder="Name search">
+                            <input type="text" ng-model="filterName" class="form-control" placeholder="Name search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div><!--end sidebar widget-->
