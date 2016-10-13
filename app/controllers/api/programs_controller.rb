@@ -22,7 +22,7 @@ class Api::ProgramsController < ApplicationController
 
   def resident_index
     @resident_programs_array = ResidentProgram.where(
-      "user_id = ? AND (support_status = ? OR volunteer = ?)", 4, true, true
+      "user_id = ? AND (support_status = ? OR volunteer = ?)", current_user.id, true, true
     )
   end
 
