@@ -285,7 +285,7 @@ Buttons style
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
-}
+
 .btn-white-bg:hover {
   background: #fff;
   color: #b3b3b3;
@@ -294,7 +294,7 @@ Buttons style
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   }
-}
+
 
 /*
 Page and heading titles
