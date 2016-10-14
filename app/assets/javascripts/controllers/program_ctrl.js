@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module("app").controller("programCtrl", ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+  angular.module('app').controller('programCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
     $scope.indexPage = function() {
       $http.get("/api/programs.json").then(function(response) {
         $scope.programs = response.data;

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.min
 //= require jquery-migrate.min
 //= require jquery.easing.1.3.min
 //= require angular
