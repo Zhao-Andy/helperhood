@@ -28,7 +28,7 @@
       }
 
       return false;
-    }
+    };
 
     $scope.mapIndex = function() {
       $http.get("/api/programs.json")
