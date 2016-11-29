@@ -88,7 +88,14 @@ class Api::ProgramsController < ApplicationController
 
   def destroy
     @program = Program.find_by(id: params[:id])
+    resident_associations = @program.resident_programs
+    nonprofit_associations = NonprofitProgram.where(
+      "user_id = ? AND program_id = ?", current_user.id, params[:id]
+    )
+    resident_associations.destroy
+    nonprofit_associations.destroy
     @program.destroy
-    render json: {info: "Program deleted!"}
+    flash[:success] = "#{@program.name} was deleted!"
+    redirect_to '/np-programs'
   end
 end

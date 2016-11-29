@@ -16,8 +16,16 @@
                             <h3 class="text-uppercase">Donated: <strong>{{program.total_donated | currency: "$" : 2}}</strong> / {{program.donation_goal | currency: "$" : 2}}</h3>
                         </div>
                         <% if !current_user.resident %>
-                        <div class="col-sm-4 text-right">
-                            <a href="/programs/{{program.id}}/edit" class="btn btn-theme-bg btn-lg">Edit</a>
+                        <div class="col-sm-4">
+                          <div class="col-sm-4 text-right">
+                              <a href="/programs/{{program.id}}/edit" class="btn btn-theme-bg btn-lg">Edit</a>
+                          </div>
+                          <div class="col-sm-4 text-right">
+                              <%= form_tag("/programs/api/{{program.id}}") %>
+
+
+                              <a href="/programs/api/{{program.id}}" class="btn btn-theme-bg btn-lg">Delete</a>
+                          </div>
                         </div>
                         <% else %>
                         <div class="col-sm-4 text-right">

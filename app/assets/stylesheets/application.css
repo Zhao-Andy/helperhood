@@ -18,5 +18,7 @@
  *= require owl.theme
  *= require owl.transitions
  *= require flaticon
+ *= require flaticon.ttf
+ *= require flaticon.woff
  *= require style
  */
