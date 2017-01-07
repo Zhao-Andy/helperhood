@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/profile' => 'profiles#show'
   get '/profile/resident/new' => 'profiles#new_resident'
   get '/profile/nonprofit/new' => 'profiles#new_nonprofit'
-  get '/profile/edit' => 'profiles#edit'
+  get '/profile/edit/:id' => 'profiles#edit'
 
   # programs
   get '/programs' => 'programs#index'

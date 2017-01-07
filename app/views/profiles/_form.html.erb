@@ -1,20 +1,40 @@
   <div>
-    <%= label_tag("Full Name") %>
-    <%= text_field_tag(:name, @profile.name) %>
+    <h3>
+      <%= label_tag("Full Name") %>
+    </h3>
+    <p>
+      <%= text_area_tag(:name, @profile.name) %>
+    </p>
   </div>
-  <%# carrier wave thing for profile img %>
   <div>
-    <%= label_tag(:description) %>
-    <%= text_field_tag(:description, @profile.description) %>
+    <h3>
+      <%= label_tag(:photo) %>
+    </h3>
+      <%= file_field_tag(:photo, class: "btn btn-primary btn-md") %>
   </div>
-  <b>Your Address:</b>
   <div>
-    <%= label_tag(:street) %>
+    <h3>
+      <%= label_tag(:description) %>
+    </h3>
+      <p><%= text_area_tag(:description, @profile.description) %></p>
+  </div>
+  <h3>Your Address:</h3>
+  <div>
+    <h4>
+      <%= label_tag(:street) %>
+    </h4>
     <%= text_field_tag(:street, @profile.street) %>
+    <h4>
     <%= label_tag(:city) %>
+    </h4>
     <%= text_field_tag(:city, @profile.city) %>
+    <h4>
     <%= label_tag(:state) %>
+    </h4>
     <%= text_field_tag(:state, @profile.state) %>
+    <h4>
     <%= label_tag(:zipcode) %>
+    </h4>
     <%= text_field_tag(:zipcode, @profile.zipcode) %>
+    </h3>
   </div>

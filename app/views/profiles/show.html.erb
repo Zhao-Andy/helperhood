@@ -1,5 +1,21 @@
-<h1>Here's Your Profile!</h1>
-<%= @profile.name %>
-<img src="<%= @profile.photo.url %>" alt="">
-<%= @profile.description %>
-<%= @profile.address %> <%= @profile.zipcode %>
+<div class="container">
+  <div class="container">
+    <h1 style="color:black;">
+      Here's Your Profile!
+    </h1>
+    <h3>
+      <%= @profile.name %>
+    </h3>
+    <img src="<%= @profile.photo.url %>" alt="">
+    <h3>
+      <%= @profile.description %>
+    </h3>
+    <h3>
+      <%= @profile.address %> <%= @profile.zipcode %>
+    </h3>
+      <%= link_to 'Edit your profile',
+                  "/profile/edit/#{@profile.id}",
+                  class: 'btn btn-primary btn-lg',
+                    style: 'color:#FFF;' %>
+  </div>
+</div>

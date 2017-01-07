@@ -1,6 +1,10 @@
-<h1>Add Photo Here</h1>
-<%= form_tag("/programs/#{@program.id}", method: "patch") do %>
-  <%= render 'form' %>
-  <%= submit_tag("Edit") %>
+<div class="container">
+<h1>Edit Your Profile</h1>
+<%= form_tag("/profile/#{@profile.id}", method: "patch") do %>
+  <div class="container">
+    <%= render 'form' %>
+    <%= submit_tag("Update", class: "btn btn-primary btn-lg", style: "color:#FFF;") %>
+  </div>
 <% end %>
 <img src="<%= @profile.photo.url %>">
+</div>
