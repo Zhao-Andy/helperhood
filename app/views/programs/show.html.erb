@@ -1,5 +1,5 @@
 <div class="space-80"></div>
-<div class="container" ng-controller="programCtrl" ng-init="show(<%= params[:id] %>)">
+<div class="container" ng-controller="programCtrl" ng-init="show('<%= @program.id %>')">
     <div class="row">
         <div class="col-md-9">
             <div class="causes-single-box">
@@ -21,9 +21,6 @@
                               <a href="/programs/{{program.id}}/edit" class="btn btn-theme-bg btn-lg">Edit</a>
                           </div>
                           <div class="col-sm-4 text-right">
-                              <%= form_tag("/programs/api/{{program.id}}") %>
-
-
                               <a href="/programs/api/{{program.id}}" class="btn btn-theme-bg btn-lg">Delete</a>
                           </div>
                         </div>
@@ -36,20 +33,15 @@
 
                     <h5>{{program.description}}</h5>
                     <hr>
-                    <ul class="list-inline text-right">
+                    <!-- <ul class="list-inline text-right">
                         <li>Share it:</li>
                         <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div><!--causes-single-box-->
           </div>
     </div>
-<footer id="footer" class="footer">
-    <div class="container text-center text-copyright">
-        <span>&copy; Helperhood</span>
-    </div>
-</footer>
 </div>

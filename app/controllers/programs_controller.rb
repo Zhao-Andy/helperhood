@@ -41,6 +41,14 @@ class ProgramsController < ApplicationController
     @programs = Program.all
   end
 
+  def np_map_index
+    if current_user.resident
+      redirect_to '/my-programs'
+    else
+      @nonprofit_programs_array = NonprofitProgram.where(user_id: current_user.id)
+    end
+  end
+
   def create
     @program = Program.create(
       name: params[:name],

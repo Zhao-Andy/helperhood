@@ -1,4 +1,7 @@
-<h1>Login</h1>
+<div class="container">
+  <div class="space-80"></div>
+  <div class="space-80"></div>
+  <h1>Login</h1>
 <%= form_tag('/login', method: 'post') do %>
   <div>
     <%= label_tag(:email) %>
@@ -10,3 +13,4 @@
   </div>
   <%= submit_tag("Login") %>
 <% end %>
+</div>

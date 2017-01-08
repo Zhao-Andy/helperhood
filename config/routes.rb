@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/programs/map' => 'programs#map_index'
   get '/my-programs' => 'programs#resident_index'
   get '/np-programs' => 'programs#nonprofit_index'
-  get '/np-programs' => 'programs#np_map_index'
+  get '/np-programs/map' => 'programs#np_map_index'
   get '/my-programs/map' => 'programs#res_map_index'
   get '/programs/new' => 'programs#new'
   get '/programs/:id' => 'programs#show'
